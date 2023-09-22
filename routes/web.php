@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Author;
+use App\Models\Client;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test',function() {
+    return Client::first()->orders;
 });
