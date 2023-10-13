@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Book extends Model
 {
@@ -18,9 +19,9 @@ class Book extends Model
 
     
     use HasFactory;
-    public function ordr(): HasOne
+    public function ordrs(): HasMany
     {
-    return $this->hasOne(orders::class);
+    return $this->hasMany(Order::class);
     }
     
 
