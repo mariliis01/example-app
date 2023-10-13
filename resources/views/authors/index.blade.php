@@ -22,7 +22,9 @@
                          </li>
                         @endforeach
                     </ul>
-
+                    <div>
+                        {{ $authors }}
+                    </div>
                 </div>
             </div>
         </div>
