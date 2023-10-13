@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ClientController;
 use App\Models\Author;
 use App\Models\Client;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +24,11 @@ Route::get('/', function () {
 Route::get('/test',function() {
     return Client::first()->orders;
 });
+
+//tahan saada Index
+
+//Route::get('/authors', [AuthorController::class, 'index']);
+
+Route::resource('authors', AuthorController::class);
+
+Route::resource('clients', ClientController::class);
