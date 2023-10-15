@@ -12,7 +12,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('orders.index', [
+            'orders' => Order::paginate(20)
+        ]);
     }
 
     /**
@@ -34,7 +36,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Order $Order)
     {
         //
     }

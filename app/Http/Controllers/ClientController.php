@@ -12,7 +12,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        return view('clients.index', [
+            'clients' => Client::paginate(20)
+        ]);
     }
 
     /**
@@ -34,7 +36,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Clients $clients)
+    public function show(Client $client)
     {
         //
     }
@@ -42,7 +44,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Clients $clients)
+    public function edit(Client $client)
     {
         //
     }
@@ -50,7 +52,7 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Clients $clients)
+    public function update(Request $request, Client $client)
     {
         //
     }
@@ -58,7 +60,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clients $clients)
+    public function destroy(Client $client)
     {
         //
     }
