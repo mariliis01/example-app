@@ -16,7 +16,13 @@
                                 <p>{{$author->first_name}} {{$author->last_name}}</p>
                                 <div class="grid grid-cols-2 gap-2 pt-2">
                                     <button>edit</button>
-                                    <x-danger-button>delete</x-danger-button>
+                                    <form method="POST" action="{{ route('authors.destroy', $author) }}">
+                                        @csrf
+                                        @method('delete')
+                                        <x-danger-button onclick="event.preventDefault(); this.closest('form').submit();">
+                                            delete
+                                        </x-danger-button>
+                                    </form>
                                 </div>
                             </div>
                          </li>
