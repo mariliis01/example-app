@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('authors', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+        Schema::table('books', function (Blueprint $table) {
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('authors');
+        Schema::table('books', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };
