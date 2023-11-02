@@ -15,7 +15,7 @@
                             <div class="flex border-b justify-between items-center">
                                 <p>{{$book->title}}</p>
                                 <div class="grid grid-cols-2 gap-2 pt-2">
-                                    <button>edit</button>
+                                    <a href="{{ route('books.edit', $book) }}">Edit</a>
                                     <form method="POST" action="{{ route('books.destroy', $book) }}">
                                         @csrf
                                         @method('delete')
