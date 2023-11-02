@@ -41,8 +41,7 @@ class BookController extends Controller
      */
     public function show(Book $book): View
     {
-        $book = Book:: with('authors')->where('id', $book->id)->get();
-        dd($book);
+        $book = Book::with('authors')->where('id', $book->id)->first();
         return view('books.show', [
             'book' => $book,
         ]);

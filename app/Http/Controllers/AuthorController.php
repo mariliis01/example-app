@@ -49,7 +49,7 @@ class AuthorController extends Controller
     public function edit(Author $author): View
     {
         return view('authors.edit', [
-            'author ' => $author,
+            'author' => $author,
         ]);
     }
 
