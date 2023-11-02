@@ -11,6 +11,9 @@ class Author extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $guarded = [];
+    
+    public $timestamps = false;
     
     public function books(): BelongsToMany
     {
