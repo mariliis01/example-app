@@ -35,7 +35,7 @@ class Book extends Model
     {
         return Attribute::make(
             get: fn (float $value) => number_format(round($value, 2), 2, ','),
-            set: fn (string $value) => str_replace(".", ",", $value)
+            set: fn (string $value) => str_replace(",", ".", $value)
         );
     }
 
