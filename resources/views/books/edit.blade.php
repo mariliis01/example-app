@@ -14,6 +14,7 @@
                         @csrf
                         @method('patch')
 
+
                         <x-input-label value="Title:" />
                         <x-text-input name="title" value="{{ old('title', $book->title) }}" />
                         <x-input-error :messages="$errors->get('title')" class="mt-2" />
@@ -50,9 +51,10 @@
                         <div class=" pt-2">
                          
 
-                          <form method="POST" action="{{ route('book.detach.author', $author) }}">
+                          <form method="POST" action="{{ route('book.detach.author', $book) }}">
                               @csrf
                               @method('delete')
+                              <input type="hidden" value="{{$author->id}}" name="author_id">
                               <x-danger-button onclick="event.preventDefault(); this.closest('form').submit();">
                                   Delete
                               </x-danger-button>

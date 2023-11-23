@@ -89,10 +89,9 @@ class BookController extends Controller
         return redirect('/books');
     }
 
-    public function detachAuthor(Author $author)
+    public function detachAuthor(Request $request, Book $book): RedirectResponse
     {
-        dd($author);
-        $author->delete();
-        return redirect('/books');
+        $book->authors()->detach($request->author_id);
+        return redirect()->back();
     }
 }
