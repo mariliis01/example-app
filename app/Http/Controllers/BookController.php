@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use App\Models\Book;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -52,8 +53,14 @@ class BookController extends Controller
      */
     public function edit(Book $book): View
     {
+        $authors = Author::whereDoesntHave('books', function (Builder $query) use ($book) {
+            $query->where('book_id', $book->id);
+        })->orderBy("first_name")->get();
+
         return view('books.edit', [
             'book' => $book,
+            'authors' => $authors,
+
         ]);
     }
 
@@ -92,6 +99,12 @@ class BookController extends Controller
     public function detachAuthor(Request $request, Book $book): RedirectResponse
     {
         $book->authors()->detach($request->author_id);
+        return redirect()->back();
+    }
+
+    public function attachAuthor(Request $request, Book $book): RedirectResponse
+    {
+        $book->authors()->attach($request->author_id);
         return redirect()->back();
     }
 }

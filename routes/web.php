@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/detachauthor/{book}', [BookController::class, 'detachAuthor'])->name('book.detach.author');
+    Route::post('/attachauthor/{book}', [BookController::class, 'attachAuthor'])->name('book.attach.author');
 });
 
 require __DIR__.'/auth.php';

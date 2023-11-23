@@ -64,7 +64,31 @@
                     
                 @endforeach
                 
-                   
+                <form method="POST" action="{{ route('book.attach.author', $book) }}">
+                        @csrf
+                        @method('post')
+
+                        <x-input-label for="author_id" value="Add author:"/>
+                        <select name="author_id" id="author_id"
+                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            @foreach ($authors as $author)
+
+                            <option value="{{ $author->id }}">{{ $author->first_name }} {{ $author->last_name }} </option>
+
+                            @endforeach
+
+                        </select>
+
+                        <div class="mt-4 space-x-2">
+                            <x-primary-button type="submit" >{{ __('Add') }}</x-primary-button>
+
+                        </div>
+                    </form>
+                
+    </div>
+                        </div>
+                    </div>
+                       
                  
                 </div>
                 </div>

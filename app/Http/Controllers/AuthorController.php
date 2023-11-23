@@ -24,7 +24,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.add');
     }
 
     /**
@@ -32,7 +32,20 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+
+                'first_name' => 'required',
+                'last_name' => 'required',
+        ],
+            [
+            'first_name.required' => 'Nõutav väli',
+            'last_name.required' => 'Nõutav väli',
+            ]);
+    Author::create($validated);
+
+    return view('authors.index', [
+        'authors' => Author::paginate(20),
+    ]);
     }
 
     /**
