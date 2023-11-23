@@ -88,4 +88,11 @@ class BookController extends Controller
         $book->delete();
         return redirect('/books');
     }
+
+    public function detachAuthor(Author $author)
+    {
+        dd($author);
+        $author->delete();
+        return redirect('/books');
+    }
 }
